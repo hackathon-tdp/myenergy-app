@@ -3,8 +3,8 @@ import {useFonts} from "expo-font";
 import {themes} from "../../variables"
 export const Heading = (props) =>{
     const [loaded] = useFonts({
-        Sen: require('../../fonts/Sen-Regular.ttf'),
-        SenBold: require('../../fonts/Sen-Bold.ttf'),
+        Sen: require('../../../assets/fonts/Sen-Regular.ttf'),
+        SenBold: require('../../../assets/fonts/Sen-Bold.ttf'),
     });
 
     if (!loaded) {

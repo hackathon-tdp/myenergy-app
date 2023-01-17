@@ -3,8 +3,8 @@ import {StyleSheet, Text, View} from "react-native";
 import { useFonts } from 'expo-font';
 export const Wrapper = (props) => {
     const [loaded] = useFonts({
-        Sen: require('../fonts/Sen-Regular.ttf'),
-        SenBold: require('../fonts/Sen-Bold.ttf'),
+        Sen: require('../../assets/fonts/Sen-Regular.ttf'),
+        SenBold: require('../../assets/fonts/Sen-Bold.ttf'),
     });
 
     if (!loaded) {

@@ -40,7 +40,7 @@ export const Navigation = () => {
 
                 }, tabBarIcon: ({color, size}) => (<Image style={{
                     width: 60, height: 60
-                }} source={require('../../../icons/plus.png')}/>),
+                }} source={require('../../../../assets/icons/plus.png')}/>),
             }}/>
             <Tab.Screen name="Statistics" component={Statistics} options={{
                 tabBarLabel: 'Statistics',
