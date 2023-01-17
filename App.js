@@ -3,7 +3,7 @@ import {Navigation} from './src/components/base/navigation/Navigation'
 import {Login} from "./src/views/Login";
 import {Wrapper} from "./src/components/Wrapper";
 import {useState} from "react";
-import { TextInput } from "@react-native-material/core";
+import { TextInput,Text } from "@react-native-material/core";
 import TextInputExample from "./src/components/base/Input";
 
 
