@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import {Navigation} from './assets/src/components/base/navigation/Navigation'
+import {Login} from "./assets/src/views/Login";
+import {Wrapper} from "./assets/src/components/Wrapper";
+import {useState} from "react";
+import { TextInput } from "@react-native-material/core";
+import TextInputExample from "./assets/src/components/base/Input";
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    const [text,setText] = useState("")
+
+    return (
+        <TextInput label="Label" style={{ margin: 16,
+        marginTop: 120}} />
+     )
+}
