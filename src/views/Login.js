@@ -1,10 +1,15 @@
-import {StyleSheet, Text, View} from "react-native";
-import {Wrapper} from "../components/Wrapper";
+import { StyleSheet, Text, View, Button } from "react-native";
+import { Wrapper } from "../components/Wrapper";
 
-export const Login = () => {
+export const Login = (props) => {
     return (
-        <Wrapper navbarActive={true}>
-            <Text>Home</Text>
+        <Wrapper>
+            <Button
+                onPress={props.loginSetter}
+                title='Log in'
+                color='#841584'
+                accessibilityLabel='Learn more about this purple button'
+            />
         </Wrapper>
     );
 };

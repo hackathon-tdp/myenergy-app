@@ -1,9 +1,7 @@
-import React from 'react';
-import {SafeAreaView, StyleSheet, TextInput} from 'react-native';
+import React from "react";
+import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
 const TextInputExample = (props) => {
-    
-
     return (
         <TextInput
             style={styles.input}

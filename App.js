@@ -1,21 +1,19 @@
-import * as React from 'react';
-import {NavigationContainer} from "@react-navigation/native";
-import {Navigation} from './src/components/base/navigation/Navigation'
-import {Login} from "./src/views/Login";
-import {Wrapper} from "./src/components/Wrapper";
-import {useState} from "react";
-import { TextInput,Text } from "@react-native-material/core";
-import TextInputExample from "./src/components/base/Input";
-
+import * as React from "react";
+import { NavigationContainer, ThemeProvider } from "@react-navigation/native";
+import { Navigation } from "./src/components/base/navigation/Navigation";
+import { Login } from "./src/views/Login";
+import { useState, createContext, useContext } from "react";
 
 export default function App() {
-
-    const [text,setText] = useState("")
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     return (
         <NavigationContainer>
-            
-            <Navigation></Navigation>
+            {isLoggedIn ? (
+                <Navigation></Navigation>
+            ) : (
+                <Login loginSetter={setIsLoggedIn}></Login>
+            )}
         </NavigationContainer>
-    )
+    );
 }

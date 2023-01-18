@@ -1,10 +1,8 @@
 export const themes = {
-    light:{
-        text: "232323"
+    light: {
+        text: "232323",
     },
     dark: {
-        text: "#fff"
-    }
-}
-
-
+        text: "#fff",
+    },
+};
