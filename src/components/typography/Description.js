@@ -4,8 +4,8 @@ import {useFonts} from "expo-font";
 export const Description = (props) =>{
 
     const [loaded] = useFonts({
-        Sen: require('../../fonts/Sen-Regular.ttf'),
-        SenBold: require('../../fonts/Sen-Bold.ttf'),
+        Sen: require('../../../assets/fonts/Sen-Regular.ttf'),
+        SenBold: require('../../../assets/fontsSen-Bold.ttf'),
     });
 
     if (!loaded) {

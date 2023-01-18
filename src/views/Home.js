@@ -7,7 +7,7 @@ export const Home = () => {
     const [text,setText] = useState("")
     return (
         <Wrapper>
-            <TextInput variant="outlined" label="Label" value={text} style={{ margin: 16 }} />
+            <TextInput variant="outlined" label="Label" value={text} onChangeText={setText} style={{ margin: 16 }} />
         </Wrapper>
     );
 };

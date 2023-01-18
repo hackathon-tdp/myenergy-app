@@ -18,7 +18,7 @@ export const Navigation = () => {
         }
     })
 
-    return (<NavigationContainer>
+    return (
         <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: '#00CC99', tabBarInactiveTintColor: '#232323', headerShown: false, tabBarStyle: {
@@ -40,7 +40,7 @@ export const Navigation = () => {
 
                 }, tabBarIcon: ({color, size}) => (<Image style={{
                     width: 60, height: 60
-                }} source={require('../../../icons/plus.png')}/>),
+                }} source={require('../../../../assets/icons/plus.png')}/>),
             }}/>
             <Tab.Screen name="Statistics" component={Statistics} options={{
                 tabBarLabel: 'Statistics',
@@ -51,6 +51,6 @@ export const Navigation = () => {
                 tabBarIcon: ({color, size}) => (<MaterialCommunityIcons name="cog" color={color} size={size}/>),
             }}/>
         </Tab.Navigator>
-    </NavigationContainer>);
+    );
 }
 
