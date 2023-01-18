@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {NavigationContainer} from "@react-navigation/native";
 import {Navigation} from './src/components/base/navigation/Navigation'
 import {Login} from "./src/views/Login";
 import {Wrapper} from "./src/components/Wrapper";
@@ -12,9 +13,9 @@ export default function App() {
     const [text,setText] = useState("")
 
     return (
-        <>
-            <TextInputExample label="Label" value={text} onChangeText={setText} placeholder='smth'/>
-            <Text>{text}</Text>
-        </>
+        <NavigationContainer>
+            
+            <Navigation></Navigation>
+        </NavigationContainer>
     )
 }

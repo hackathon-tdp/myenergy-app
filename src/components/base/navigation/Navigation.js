@@ -18,7 +18,7 @@ export const Navigation = () => {
         }
     })
 
-    return (<NavigationContainer>
+    return (
         <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: '#00CC99', tabBarInactiveTintColor: '#232323', headerShown: false, tabBarStyle: {
@@ -51,6 +51,6 @@ export const Navigation = () => {
                 tabBarIcon: ({color, size}) => (<MaterialCommunityIcons name="cog" color={color} size={size}/>),
             }}/>
         </Tab.Navigator>
-    </NavigationContainer>);
+    );
 }
 
