@@ -1,13 +1,12 @@
 import { Wrapper } from "../components/Wrapper";
-import { TextInput } from "react-native";
-import { TextInputExample } from "../components/base/Input";
+import { TextInput, Text } from "react-native";
+
 import React, { useState } from "react";
 
 export const Home = () => {
-    const [text, setText] = useState("");
     return (
         <Wrapper>
-            <TextInputExample />
+            <Text>HOME</Text>
         </Wrapper>
     );
 };

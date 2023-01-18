@@ -2,16 +2,18 @@ import React from "react";
 import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 import { useState } from "react";
 
-export const TextInputExample = () => {
-    return <TextInput style={styles.input} label='label' />;
+export const TextInputExample = (props) => {
+    return <TextInput style={styles.input} placeholder={props.placeholder} />;
 };
 
 const styles = StyleSheet.create({
     input: {
-        width: 200,
-        height: 40,
+        backgroundColor: '#F4F6F9',
+        fontSize: 20,
+        width: '80%',
+        height: 60,
         margin: 12,
-        borderWidth: 1,
+        borderRadius: 5,
         padding: 10,
     },
 });
