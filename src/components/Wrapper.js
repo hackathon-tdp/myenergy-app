@@ -11,19 +11,7 @@ export const Wrapper = (props) => {
         return null;
     }
 
-    return (
-        <View style={styles.wrapper}>
-            <View>
-                <Text
-                    style={{
-                        marginTop: 80,
-                    }}
-                >
-                    {props.children}
-                </Text>
-            </View>
-        </View>
-    );
+    return <View style={styles.wrapper}>{props.children}</View>;
 };
 
 const styles = StyleSheet.create({

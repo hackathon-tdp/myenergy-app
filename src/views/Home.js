@@ -1,19 +1,13 @@
 import { Wrapper } from "../components/Wrapper";
-import { Input } from "../components/base/Input";
-import { TextInput } from "@react-native-material/core";
+import { TextInput } from "react-native";
+import { TextInputExample } from "../components/base/Input";
 import React, { useState } from "react";
 
 export const Home = () => {
     const [text, setText] = useState("");
     return (
         <Wrapper>
-            <TextInput
-                variant='outlined'
-                label='Label'
-                value={text}
-                onChangeText={setText}
-                style={{ margin: 16 }}
-            />
+            <TextInputExample />
         </Wrapper>
     );
 };
