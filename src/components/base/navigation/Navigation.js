@@ -2,7 +2,6 @@ import * as React from "react";
 import { StyleSheet, Image } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
 import { Home } from "../../../views/Home";
 import { Devices } from "../../../views/Devices";
 import { Statistics } from "../../../views/Statistics";

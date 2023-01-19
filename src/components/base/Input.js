@@ -1,9 +1,8 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, TextInput } from "react-native";
-import { useState } from "react";
+import { StyleSheet, TextInput } from "react-native";
 
-export const TextInputExample = (props) => {
-    return <TextInput style={styles.input} placeholder={props.placeholder} />;
+export const Input = (props) => {
+    return <TextInput style={styles.input} placeholder={props.placeholder}/>;
 };
 
 const styles = StyleSheet.create({

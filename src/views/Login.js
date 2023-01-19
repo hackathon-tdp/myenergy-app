@@ -1,12 +1,12 @@
 import { StyleSheet, Text, View, Button } from "react-native";
 import { Wrapper } from "../components/Wrapper";
-import { TextInputExample } from "../components/base/Input";
+import { Input } from "../components/base/Input";
 
 export const Login = (props) => {
     return (
         <Wrapper>
-            <TextInputExample placeholder='email' />
-            <TextInputExample placeholder='password' />
+            <Input placeholder='email' />
+            <Input placeholder='password' />
             <Button
                 onPress={props.loginSetter}
                 title='Log in'
