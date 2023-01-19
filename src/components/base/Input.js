@@ -15,5 +15,6 @@ const styles = StyleSheet.create({
         margin: 12,
         borderRadius: 5,
         padding: 10,
+        fontFamily: 'Sen'
     },
 });
