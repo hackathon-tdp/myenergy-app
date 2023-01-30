@@ -8,8 +8,9 @@ export const Wrapper = (props) => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#fff",
+        alignItems: 's`pace-'
+        width: "100%",
+        maxWidth: 330,
+        alignSelf: "center",
     },
 });

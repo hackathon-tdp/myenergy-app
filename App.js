@@ -1,9 +1,10 @@
 import * as React from "react";
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, } from "react";
 import { NavigationContainer, ThemeProvider } from "@react-navigation/native";
 import { Navigation } from "./src/components/base/navigation/Navigation";
 import { Login } from "./src/views/Login";
 import { useFonts } from "expo-font";
+import {StyleSheet, View} from "react-native";
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,12 +19,20 @@ export default function App() {
     }
 
     return (
-        <NavigationContainer>    
-            {isLoggedIn ? (
-                <Navigation></Navigation>
-            ) : (
-                <Login loginSetter={setIsLoggedIn}></Login>
-            )}
-        </NavigationContainer>
+        <View style={style.app}>
+            <NavigationContainer>
+                {isLoggedIn ? (
+                    <Navigation></Navigation>
+                ) : (
+                    <Login loginSetter={setIsLoggedIn}></Login>
+                )}
+            </NavigationContainer>
+        </View>
     );
 }
+
+const style = StyleSheet.create({
+    app: {
+        flex: 1,
+    }
+})
