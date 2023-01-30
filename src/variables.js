@@ -6,3 +6,8 @@ export const themes = {
         text: "#fff",
     },
 };
+
+
+export const styles = {
+
+};
