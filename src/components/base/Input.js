@@ -1,27 +1,45 @@
-import React, {useState} from "react";
-import {Platform, StyleSheet, Text, TextInput, View} from "react-native";
-import Icon from "./Icon"
-import { Button } from 'react-native'
+import React, { useState } from "react";
+import { Platform, StyleSheet, Text, TextInput, View } from "react-native";
+import Icon from "./Icon";
+import { Button, Pressable } from "react-native";
 import DatePicker from "react-native-date-picker";
 import DropDownPicker from "react-native-dropdown-picker";
-export const Input = (props) => {
-    const [open, setOpen] = useState(false);
+
+export const Input = ({
+    marginTop,
+    placeholder,
+    secure,
+    autoComplete,
+    icon,
+}) => {
+    // const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
-    const [items, setItems] = useState([
-        {label: 'AGD', value: 'agd'},
-        {label: 'RTV', value: 'rtv'},
-        {label: 'Fridge', value: 'fridge'}
-    ]);
+    // const [items, setItems] = useState([
+    //     {label: 'AGD', value: 'agd'},
+    //     {label: 'RTV', value: 'rtv'},
+    //     {label: 'Fridge', value: 'fridge'}
+    // ]);
 
     return (
-        <View style={styles.container}>
-            <TextInput style={styles.input}
-                       placeholder={props.placeholder}
-                       placeholderTextColor="#09101D"
-                       secureTextEntry={props.secure}
+        <View
+            style={StyleSheet.compose(styles.container, {
+                marginTop: marginTop,
+            })}
+        >
+            <TextInput
+                style={styles.input}
+                placeholder={placeholder}
+                placeholderTextColor='#09101D'
+                secureTextEntry={secure}
+                value={value}
+                onChangeText={setValue}
+                autoComplete={autoComplete}
             />
-            <Icon type={props.icon} color={"#000"} style={styles.icon}/>
+            <Pressable style={styles.icon}>
+                <Icon type={icon} color={"#000"} />
+            </Pressable>
         </View>
+
         // <DropDownPicker
         //     open={open}
         //     value={value}
@@ -30,17 +48,16 @@ export const Input = (props) => {
         //     setValue={setValue}
         //     setItems={setItems}
         // />
-    )
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
         width: "100%",
-        flex: 1,
         justifyContent: "center",
     },
 
-    icon:{
+    icon: {
         position: "absolute",
         right: 0,
         paddingHorizontal: 48,
@@ -49,12 +66,13 @@ const styles = StyleSheet.create({
     },
 
     input: {
-        backgroundColor: '#F4F6F9',
+        backgroundColor: "#F4F6F9",
         fontSize: 16,
         height: 60,
         borderRadius: 5,
         paddingHorizontal: 16,
-        color: "09101D",
-        fontFamily: 'Arial',
+        paddingRight: 70,
+        color: "#09101D",
+        fontFamily: "Sen",
     },
 });
