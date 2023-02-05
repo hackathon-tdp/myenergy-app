@@ -49,14 +49,14 @@ export const Login = ({loginSetter}) => {
             </InlineBox>
             <Input
                 marginTop={16}
-                placeholder='email'
+                placeholder='Email'
                 secure={false}
                 // icon={"email"}
                 autoComplete='email'
             />
             <Input
                 marginTop={13}
-                placeholder='hasło'
+                placeholder='Hasło'
                 secure={true}
                 // icon={"power"}
                 autoComplete='password'

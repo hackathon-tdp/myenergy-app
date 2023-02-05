@@ -30,8 +30,8 @@ export default function App() {
                 ) : (
                     // <SignUp loginSetter={setIsLoggedIn} />
                     // <Login loginSetter={setIsLoggedIn} />
-                    // <PasswordReset />
-                    <EmailSent />
+                    <PasswordReset />
+                    // <EmailSent />
                 )}
             </NavigationContainer>
         </View>

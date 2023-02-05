@@ -18,7 +18,7 @@ export const PasswordReset = () => {
             </Description>
             <Input
                 marginTop={47}
-                placeholder='email'
+                placeholder='Email'
                 secure={false}
                 autoComplete='email'
             />

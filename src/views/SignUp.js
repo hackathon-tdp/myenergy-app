@@ -14,19 +14,19 @@ export const SignUp = () => {
             <Heading marginTop={58}>Zarejestruj się</Heading>
             <Input
                 marginTop={76}
-                placeholder='email'
+                placeholder='Email'
                 secure={false}
                 autoComplete='email'
             />
             <Input
                 marginTop={14}
-                placeholder='hasło'
+                placeholder='Hasło'
                 secure={true}
                 autoComplete='password-new'
             />
             <Input
                 marginTop={14}
-                placeholder='powtórz hasło'
+                placeholder='Hasło'
                 secure={true}
                 autoComplete='password-new'
             />
