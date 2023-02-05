@@ -1,41 +1,12 @@
-import {
-    StyleSheet,
-    Text,
-    View,
-    Pressable,
-    Image,
-} from "react-native";
+import { Image } from "react-native";
 import { Wrapper } from "../components/Wrapper";
 import { Input } from "../components/base/Input";
 import { Heading } from "../components/typography/Heading";
 import { Description } from "../components/typography/Description";
-import { Button } from '../components/base/Button';
+import { Button } from "../components/base/Button";
+import { InlineBox } from "../components/base/InlineBox";
 
-const InlineBox = ({ marginTop, children }) => {
-    return (
-        <View
-            style={{
-                marginTop: marginTop,
-                flexDirection: "row",
-                flexWrap: "wrap",
-            }}
-        >
-            {children}
-        </View>
-    );
-};
-
-const TextLink = ({ onPress, marginTop, children }) => {
-    return (
-        <Pressable style={{ marginTop: marginTop }} onPress={onPress}>
-            <Text style={{ fontFamily: "Sen", fontSize: 17, color: "#009973" }}>
-                {children}
-            </Text>
-        </Pressable>
-    );
-};
-
-export const Login = ({loginSetter}) => {
+export const Login = ({ loginSetter }) => {
     return (
         <Wrapper alignItems='center' justifyContent='center'>
             <Image
@@ -62,7 +33,7 @@ export const Login = ({loginSetter}) => {
                 autoComplete='password'
             />
             <TextLink marginTop={13}>Zapomniałeś hasła?</TextLink>
-            <Button marginTop={33} onPress={loginSetter}> Zaloguj się </Button>
+            <Button marginTop={33} onPress={loginSetter}>Zaloguj się</Button>
         </Wrapper>
     );
 };
