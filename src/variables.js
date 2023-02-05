@@ -1,13 +1,36 @@
-export const themes = {
-    light: {
-        text: "#232323",
+export const lightTheme = {
+    colors: {
+        background: '#ffffff',
+
+        headerText: '#232323',
+        descriptionText: '#232323',
+        linkText: '#009973',
+
+        buttonFilledText: '#ffffff',
+        buttonFilledBackground: '#00CC99',
+
+        buttonEmptyText: '#00CC99',
+        
+        buttonInactiveText: '#999999',
+        buttonInactiveBackground: '#CCCCCC', 
+
+        inputText: '#09101D',
+        inputBackground: '#F4F6F9',
+
+        border: '#e4e4e4',
+    }, 
+    font: {
+        regular: 'Sen',
+        bold: 'SenBold'
     },
-    dark: {
-        text: "#fff",
-    },
-};
+    textSize: {
+        large: 28,
+        medium: 17,
+    }
+}
+export const darkTheme = {
+    ...lightTheme,
+    colors: {
 
-
-export const styles = {
-
-};
+    }
+}

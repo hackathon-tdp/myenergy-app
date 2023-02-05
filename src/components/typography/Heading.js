@@ -1,20 +1,19 @@
+import { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
-import { themes } from "../../variables";
+import ThemeContext from "../ThemeContext";
 
 export const Heading = ({ marginTop, children }) => {
-    return (
-        <Text
-            style={StyleSheet.compose(styles.heading, { marginTop: marginTop })}
-        >
-            {children}
-        </Text>
-    );
-};
+    const theme = useContext(ThemeContext);
 
-const styles = StyleSheet.create({
-    heading: {
-        fontFamily: "SenBold",
-        fontSize: 28,
-        color: themes.light.text,
-    },
-});
+    const styles = StyleSheet.create({
+        heading: {
+            marginTop: marginTop,
+
+            fontFamily: theme.font.bold,
+            fontSize: theme.textSize.large,
+            color: theme.colors.headerText,
+        },
+    });
+
+    return <Text style={styles.heading}>{children}</Text>;
+};

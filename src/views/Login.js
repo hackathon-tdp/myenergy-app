@@ -5,6 +5,7 @@ import { Heading } from "../components/typography/Heading";
 import { Description } from "../components/typography/Description";
 import { Button } from "../components/base/Button";
 import { InlineBox } from "../components/base/InlineBox";
+import { TextLink } from '../components/typography/TextLink'
 
 export const Login = ({ loginSetter }) => {
     return (

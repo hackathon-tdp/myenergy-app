@@ -1,23 +1,20 @@
+import { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
-import { themes } from "../../variables";
+import ThemeContext from "../ThemeContext";
 
 export const Description = ({ marginTop, textAlign, children }) => {
-    return (
-        <Text
-            style={StyleSheet.compose(styles.description, {
-                marginTop: marginTop,
-                textAlign: textAlign,
-            })}
-        >
-            {children}
-        </Text>
-    );
-};
+    const theme = useContext(ThemeContext);
 
-const styles = StyleSheet.create({
-    description: {
-        fontFamily: "Sen",
-        fontSize: 17,
-        color: themes.light.text,
-    },
-});
+    const styles = StyleSheet.create({
+        description: {
+            marginTop: marginTop,
+            textAlign: textAlign,
+
+            fontFamily: theme.font.regular,
+            fontSize: theme.textSize.medium,
+            color: theme.colors.descriptionText,
+        },
+    });
+
+    return <Text style={styles.description}>{children}</Text>;
+};
