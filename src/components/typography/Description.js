@@ -4,10 +4,10 @@ import { themes } from "../../variables";
 export const Description = ({ marginTop, textAlign, children }) => {
     return (
         <Text
-            style={StyleSheet.compose(
-                { marginTop: marginTop, textAlign: textAlign },
-                styles.description
-            )}
+            style={StyleSheet.compose(styles.description, {
+                marginTop: marginTop,
+                textAlign: textAlign,
+            })}
         >
             {children}
         </Text>

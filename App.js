@@ -1,6 +1,6 @@
 //import 'react-native-gesture-handler';  // dont delete yet i need to check if everythings alright
 import * as React from "react";
-import { useState, createContext, useContext, } from "react";
+import { useState, createContext, useContext } from "react";
 import { NavigationContainer, ThemeProvider } from "@react-navigation/native";
 import { Navigation } from "./src/components/base/navigation/Navigation";
 import { useFonts } from "expo-font";
@@ -29,9 +29,9 @@ export default function App() {
                 {isLoggedIn ? (
                     <Navigation></Navigation>
                 ) : (
+                    <Login loginSetter={setIsLoggedIn} />
                     // <SignUp loginSetter={setIsLoggedIn} />
-                    // <Login loginSetter={setIsLoggedIn} />
-                    <PasswordReset />
+                    // <PasswordReset />
                     // <EmailSent />
                 )}
             </NavigationContainer>

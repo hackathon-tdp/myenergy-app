@@ -4,7 +4,7 @@ import { themes } from "../../variables";
 export const Heading = ({ marginTop, children }) => {
     return (
         <Text
-            style={StyleSheet.compose({ marginTop: marginTop }, styles.heading)}
+            style={StyleSheet.compose(styles.heading, { marginTop: marginTop })}
         >
             {children}
         </Text>
