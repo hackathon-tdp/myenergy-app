@@ -1,16 +1,23 @@
 import { StyleSheet, Text } from "react-native";
+import { themes } from "../../variables";
 
-
-export const Description = (props) => {
-    return <Text style={styles.description}>{props.content}</Text>;
+export const Description = ({ marginTop, textAlign, children }) => {
+    return (
+        <Text
+            style={StyleSheet.compose(
+                { marginTop: marginTop, textAlign: textAlign },
+                styles.description
+            )}
+        >
+            {children}
+        </Text>
+    );
 };
 
 const styles = StyleSheet.create({
     description: {
         fontFamily: "Sen",
         fontSize: 17,
-        paddingHorizontal: 20,
-        marginTop: 12,
-        textAlign: "center",
+        color: themes.light.text,
     },
 });
