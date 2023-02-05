@@ -1,3 +1,4 @@
+//import 'react-native-gesture-handler';  // dont delete yet i need to check if everythings alright
 import * as React from "react";
 import { useState, createContext, useContext, } from "react";
 import { NavigationContainer, ThemeProvider } from "@react-navigation/native";
