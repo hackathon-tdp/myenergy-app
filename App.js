@@ -6,10 +6,11 @@ import { Navigation } from "./src/components/base/navigation/Navigation";
 import { useFonts } from "expo-font";
 import {StyleSheet, View} from "react-native";
 
-import { Login } from "./src/views/Login";
-import { SignUp } from "./src/views/SignUp";
-import { PasswordReset } from "./src/views/PasswordReset";
-import { EmailSent } from "./src/views/EmailSent";
+import { Login } from "./src/views/user-auth/Login";
+import { SignUp } from "./src/views/user-auth/SignUp";
+import { PasswordReset } from "./src/views/user-auth/PasswordReset";
+import { EmailSent } from "./src/views/user-auth/EmailSent";
+import UserAuth from "./src/views/UserAuth";
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -17,6 +18,7 @@ export default function App() {
     const [loaded] = useFonts({
         Sen: require("./assets/fonts/Sen-Regular.ttf"),
         SenBold: require("./assets/fonts/Sen-Bold.ttf"),
+        SourceSansProSemiBold: require("./assets/fonts/SourceSansPro-SemiBold.ttf")
     });
 
     if(!loaded) {
@@ -29,10 +31,7 @@ export default function App() {
                 {isLoggedIn ? (
                     <Navigation></Navigation>
                 ) : (
-                    <Login loginSetter={setIsLoggedIn} />
-                    // <SignUp loginSetter={setIsLoggedIn} />
-                    // <PasswordReset />
-                    // <EmailSent />
+                    <UserAuth></UserAuth>
                 )}
             </NavigationContainer>
         </View>
