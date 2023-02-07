@@ -5,9 +5,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../../../views/Home";
 import { Devices } from "../../../views/Devices";
 import { Statistics } from "../../../views/Statistics";
+import { AddDevice } from "../../../views/AddDevice";
 import { Settings } from "../../../views/Settings";
 
 const Tab = createBottomTabNavigator();
+
 export const Navigation = () => {
     const styles = StyleSheet.create({
         plus: {
@@ -56,7 +58,12 @@ export const Navigation = () => {
             />
             <Tab.Screen
                 name='Add'
-                component={Statistics}
+                component={AddDevice}
+                listeners={{
+                    tabPress: e => {
+                        e.preventDefault();
+                    }
+                }}
                 options={{
                     tabBarLabel: () => null,
                     tabBarItemStyle: {
