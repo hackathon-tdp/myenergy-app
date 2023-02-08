@@ -1,25 +1,27 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 
-export const Wrapper = ({ alignItems, justifyContent, paddingBottom, children }) => {
+export const Wrapper = ({
+    alignItems,
+    justifyContent,
+    paddingBottom,
+    backgroundColor,
+    children,
+}) => {
+    const styles = StyleSheet.create({
+        wrapper: {
+            flex: 1,
+            width: "100%",
+            paddingHorizontal: 28,
+            alignSelf: "center",
+            backgroundColor: backgroundColor ?? "#ffffff",
+            alignItems: alignItems,
+            justifyContent: justifyContent,
+            paddingBottom: paddingBottom,
+        },
+    });
+
     return (
-        <View
-            style={StyleSheet.compose(
-                { alignItems: alignItems, justifyContent: justifyContent, paddingBottom: paddingBottom },
-                styles.wrapper
-            )}
-        >
-            {children}
-        </View>
+        <View style={styles.wrapper}>{children}</View>
     );
 };
-
-const styles = StyleSheet.create({
-    wrapper: {
-        flex: 1,
-        width: "100%",
-        paddingHorizontal: 28,
-        alignSelf: "center",
-        backgroundColor: "#fff",
-    },
-});
