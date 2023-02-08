@@ -30,7 +30,7 @@ const Welcome = ({ navigation }) => {
                     onPress={() => {
                         navigation.navigate("signUp");
                     }}
-                    isFilled={false}
+                    type='empty'
                 >
                     Zarejestruj się
                 </Button>
