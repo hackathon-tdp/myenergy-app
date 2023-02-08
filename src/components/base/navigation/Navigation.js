@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, Modal, View, Text } from "react-native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../../../views/Home";
@@ -11,6 +11,8 @@ import { Settings } from "../../../views/Settings";
 const Tab = createBottomTabNavigator();
 
 export const Navigation = () => {
+    const [modalVisible, toggleModalVisible] = React.useState(false);
+
     const styles = StyleSheet.create({
         plus: {
             backgroundColor: "232323",
@@ -18,6 +20,8 @@ export const Navigation = () => {
     });
 
     return (
+        <>
+        <AddDevice visible={modalVisible} toggle={toggleModalVisible} />
         <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: "#00CC99",
@@ -27,7 +31,7 @@ export const Navigation = () => {
                     borderTopWidth: 0,
                 },
             }}
-        >
+            >
             <Tab.Screen
                 name='Home'
                 component={Home}
@@ -35,13 +39,13 @@ export const Navigation = () => {
                     tabBarLabel: "Home",
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons
-                            name='home'
-                            color={color}
-                            size={size}
+                        name='home'
+                        color={color}
+                        size={size}
                         />
-                    ),
-                }}
-            />
+                        ),
+                    }}
+                    />
             <Tab.Screen
                 name='Devices'
                 component={Devices}
@@ -49,19 +53,20 @@ export const Navigation = () => {
                     tabBarLabel: "Devices",
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons
-                            name='cellphone-link'
-                            color={color}
-                            size={size}
+                        name='cellphone-link'
+                        color={color}
+                        size={size}
                         />
-                    ),
-                }}
-            />
+                        ),
+                    }}
+                    />
             <Tab.Screen
                 name='Add'
                 component={AddDevice}
                 listeners={{
                     tabPress: e => {
                         e.preventDefault();
+                        toggleModalVisible(true);
                     }
                 }}
                 options={{
@@ -73,15 +78,15 @@ export const Navigation = () => {
                     },
                     tabBarIcon: ({ color, size }) => (
                         <Image
-                            style={{
-                                width: 60,
-                                height: 60,
-                            }}
-                            source={require("../../../../assets/icons/plus.png")}
+                        style={{
+                            width: 60,
+                            height: 60,
+                        }}
+                        source={require("../../../../assets/icons/plus.png")}
                         />
-                    ),
-                }}
-            />
+                        ),
+                    }}
+                    />
             <Tab.Screen
                 name='Statistics'
                 component={Statistics}
@@ -89,13 +94,13 @@ export const Navigation = () => {
                     tabBarLabel: "Statistics",
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons
-                            name='poll'
-                            color={color}
-                            size={size}
+                        name='poll'
+                        color={color}
+                        size={size}
                         />
-                    ),
-                }}
-            />
+                        ),
+                    }}
+                    />
             <Tab.Screen
                 name='Settings'
                 component={Settings}
@@ -103,13 +108,14 @@ export const Navigation = () => {
                     tabBarLabel: "Settings",
                     tabBarIcon: ({ color, size }) => (
                         <MaterialCommunityIcons
-                            name='cog'
-                            color={color}
-                            size={size}
+                        name='cog'
+                        color={color}
+                        size={size}
                         />
-                    ),
-                }}
-            />
+                        ),
+                    }}
+                    />
         </Tab.Navigator>
+        </>
     );
 };
