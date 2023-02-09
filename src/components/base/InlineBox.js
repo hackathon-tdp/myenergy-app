@@ -7,6 +7,7 @@ export const InlineBox = ({ marginTop, type, children }) => {
             flexDirection: "row",
             flexWrap: "wrap",
             justifyContent: type,
+            width: '100%'
         },
     });
 
