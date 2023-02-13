@@ -7,9 +7,11 @@ import DropDownPicker from "react-native-dropdown-picker";
 
 export const Input = ({
     marginTop,
+    width,
     placeholder,
     secure,
     autoComplete,
+    keyboardType,
     icon,
 }) => {
     // const [open, setOpen] = useState(false);
@@ -24,6 +26,7 @@ export const Input = ({
         <View
             style={StyleSheet.compose(styles.container, {
                 marginTop: marginTop,
+                width: width!=null? width : "100%",
             })}
         >
             <TextInput
@@ -33,6 +36,7 @@ export const Input = ({
                 secureTextEntry={secure}
                 value={value}
                 onChangeText={setValue}
+                keyboardType={keyboardType}
                 autoComplete={autoComplete}
             />
             <Pressable style={styles.icon}>
