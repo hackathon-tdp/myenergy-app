@@ -93,8 +93,8 @@ const AddNewDevice = () => {
                 Dodaj urządzenie, by wiedzieć ile prądu zużywa w praktyce
             </Description>
             <Input marginTop={38} placeholder='Nazwa urządzenia' />
-            <Input marginTop={18} placeholder='Nazwa lokalizacji' />
-            <Input marginTop={18} placeholder='Nazwa pokoju' />
+            <Input marginTop={18} placeholder='Lokalizacja urządzenia' />
+            <Input marginTop={18} placeholder='Kategoria urządzenia' />
             <InlineBox type='space-between' marginTop={18}>
                 <ImagePicker placeholder='Zdjęcie' icon='photo' width='48%' />
                 <Input
@@ -104,6 +104,145 @@ const AddNewDevice = () => {
                     width='48%'
                 />
             </InlineBox>
+        </View>
+    );
+};
+
+const ChooseHours = ({ days, hours, setHours }) => {
+    const Line = ({ day, hours }) => {
+        const translateDay = () => {
+            switch (day) {
+                case "mon":
+                    return "Poniedziałek";
+                case "tue":
+                    return "Wtorek";
+                case "wed":
+                    return "Środa";
+                case "thu":
+                    return "Czwartek";
+                case "fri":
+                    return "Piątek";
+                case "sat":
+                    return "Sobota";
+                case "sun":
+                    return "Niedziela";
+                default:
+                    return "chuj";
+            }
+        };
+
+        return (
+            <InlineBox marginTop={10}>
+                <View
+                    style={{
+                        borderRadius: 5,
+                        backgroundColor: "#fff",
+                        justifyContent: "center",
+                        height: 48,
+                        flex: 1,
+                        paddingHorizontal: 16,
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontFamily: "SourceSansProSemiBold",
+                            fontSize: 16,
+                            color: "#09101D",
+                        }}
+                    >
+                        {translateDay()}
+                    </Text>
+                </View>
+                <View
+                    style={{
+                        borderRadius: 5,
+                        backgroundColor: "#fff",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: 48,
+                        width: 40,
+                        marginLeft: 8,
+                    }}
+                >
+                    <Text
+                        style={{
+                            fontFamily: "SourceSansProSemiBold",
+                            fontSize: 16,
+                            color: "#09101D",
+                        }}
+                    >
+                        {hours[day]}
+                    </Text>
+                </View>
+                <Pressable
+                    style={{
+                        borderRadius: 5,
+                        backgroundColor: "#00CC99",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: 48,
+                        width: 70,
+                        marginLeft: 9,
+                    }}
+                    onPress={() => {
+                        setHours((prevState) => {
+                            if (prevState[day] >= 24) return prevState;
+                            return {
+                                ...prevState,
+                                [day]: prevState[day] + 1,
+                            };
+                        });
+                    }}
+                >
+                    <Image
+                        source={require("../../assets/icons/form/plus.png")}
+                        style={{ width: 15, height: 15, resizeMode: "contain" }}
+                    />
+                </Pressable>
+                <Pressable
+                    style={{
+                        borderRadius: 5,
+                        backgroundColor: "#F48479",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: 48,
+                        width: 70,
+                        marginLeft: 9,
+                    }}
+                    onPress={() => {
+                        setHours((prevState) => {
+                            if (prevState[day] <= 0) return prevState;
+                            return {
+                                ...prevState,
+                                [day]: prevState[day] - 1,
+                            };
+                        });
+                    }}
+                >
+                    <Image
+                        source={require("../../assets/icons/form/minus.png")}
+                        style={{ width: 15, height: 15, resizeMode: "contain" }}
+                    />
+                </Pressable>
+            </InlineBox>
+        );
+    };
+
+    const HourPicker = ({ marginTop }) => {
+        const result = [];
+        days.forEach((day) =>
+            result.push(<Line day={day} hours={hours} setHours={setHours} />)
+        );
+        return <View style={{ marginTop: marginTop }}>{result}</View>;
+    };
+
+    return (
+        <View style={{ paddingVertical: 60, alignItems: "center" }}>
+            <Heading textAlign='center'>Wybierz godziny użytkowania</Heading>
+            <Description marginTop={20} textAlign='center'>
+                Pozwoli to nam wygenerować bardziej precyzyjne statystyki
+            </Description>
+            <HourPicker marginTop={28} />
         </View>
     );
 };
@@ -176,30 +315,55 @@ const ChooseDays = ({ days, setDays }) => {
     );
 };
 
+const FormCompleted = ({ type }) => {
+    return (
+        <View style={{ paddingVertical: 60, alignItems: "center" }}>
+            <Image
+                style={{
+                    height: 190,
+                    resizeMode: "contain",
+                }}
+                source={require("../../assets/img/completed.png")}
+            />
+            <Heading marginTop={35}>Dodano {type}</Heading>
+            <Description marginTop={20} textAlign='center'>
+                Teraz przejdź do widoku urządzeń, aby poznać staystyki
+            </Description>
+        </View>
+    );
+};
+
 export const AddDevice = ({ navigation, visible, toggle }) => {
     const [stage, setStage] = useState(0);
     const [option, setOption] = useState(0);
     const [localisationName, setLocalisationName] = useState("");
     // ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
     const [days, setDays] = useState([]);
+    const defaultHours = {
+        mon: 0,
+        tue: 0,
+        wed: 0,
+        thu: 0,
+        fri: 0,
+        sat: 0,
+        sun: 0,
+    };
+    const [hours, setHours] = useState(defaultHours);
 
     const isReady = () => {
-        return true;
-        // switch (stage) {
-        //     case 0:
-        //         return option !== 0;
-        //     case 1:
-        //         return days.length !== 0;
-        //     case 2:
-        //         return localisationName !== "";
-        //     default:
-        //         return false;
-        // }
+        switch (stage) {
+            case 0:
+                return option !== 0;
+            case 2:
+                return option!=3 || days.length!=0;
+            default:
+                return true;
+        }
     };
 
     const nextStage = () => {
         if (isReady()) {
-            setStage(stage + 1);
+            setStage((prevState) => prevState + 1);
         }
     };
 
@@ -208,18 +372,29 @@ export const AddDevice = ({ navigation, visible, toggle }) => {
         setStage(0);
         setOption(0);
         setDays([]);
+        setHours(defaultHours);
     };
+
+    const Stages = [
+        [],
+        [null, <AddNewLocalisation />, <FormCompleted type='lokalizację' />, null],
+        [null, <AddNewRoom />, <FormCompleted type='pokój' />, null],
+        [
+            null,
+            <AddNewDevice />,
+            <ChooseDays days={days} setDays={setDays} />,
+            <ChooseHours days={days} hours={hours} setHours={setHours} />,
+            <FormCompleted type='urządzenie' />,
+            null
+        ],
+    ];
 
     const Content = () => {
         switch (stage) {
             case 0:
                 return <ChooseCategory option={option} setOption={setOption} />;
-            case 1:
-                return <ChooseDays days={days} setDays={setDays} />;
-            case 2:
-                return <AddNewDevice />;
             default:
-                return null;
+                return <>{Stages[option][stage]}</>;
         }
     };
 
@@ -258,11 +433,15 @@ export const AddDevice = ({ navigation, visible, toggle }) => {
                         </Button>
                         <Button
                             onPress={() => {
-                                nextStage();
+                                if(option != 0 && Stages[option][stage+1]==null) {
+                                    close();
+                                } else {
+                                    nextStage();
+                                }
                             }}
                             type={isReady() ? "default" : "inactive"}
                         >
-                            Dalej
+                            {option != 0 && Stages[option][stage+1]==null ? 'Zakończ' : 'Dalej'}
                         </Button>
                     </InlineBox>
                 </Wrapper>

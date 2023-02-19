@@ -65,7 +65,7 @@ const CategoryElement = (props) => {
                     {props.desc}
                 </Text>
             </View>
-            <View style={{}}>
+            <View>
                 {/* <Switch
                     style={{ width: 50, height: 50 }}
                     trackColor={{ false: "#767577", true: "#81b0ff" }}

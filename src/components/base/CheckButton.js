@@ -8,6 +8,11 @@ export const CheckButton = ({ title, value, option, setOption, full }) => {
         );
     };
 
+    const sortDaysOfTheWeek = (a, b) => {
+        const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+        return days.indexOf(a) - days.indexOf(b);
+    }
+
     return (
         <Pressable
             style={{
@@ -20,7 +25,7 @@ export const CheckButton = ({ title, value, option, setOption, full }) => {
             }}
             onPress={() => {
                 if (value === "all") {
-                    if (!checkArrays(option.sort(), full.sort())) {
+                    if (!checkArrays(option.sort(sortDaysOfTheWeek), full.sort(sortDaysOfTheWeek))) {
                         setOption(full);
                     } else {
                         setOption([]);
@@ -58,7 +63,7 @@ export const CheckButton = ({ title, value, option, setOption, full }) => {
                     }}
                 >
                     {(value === "all" &&
-                        checkArrays(option.sort(), full.sort())) ||
+                        checkArrays(option.sort(sortDaysOfTheWeek), full.sort(sortDaysOfTheWeek))) ||
                     option?.includes(value) ? (
                         <View
                             style={{
