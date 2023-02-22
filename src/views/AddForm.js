@@ -333,7 +333,7 @@ const FormCompleted = ({ type }) => {
     );
 };
 
-export const AddDevice = ({ navigation, visible, toggle }) => {
+export const AddForm = ({ navigation, visible, toggle }) => {
     const [stage, setStage] = useState(0);
     const [option, setOption] = useState(0);
     const [localisationName, setLocalisationName] = useState("");

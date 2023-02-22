@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../../../views/Home";
 import { Devices } from "../../../views/Devices";
 import { Statistics } from "../../../views/Statistics";
-import { AddDevice } from "../../../views/AddDevice";
+import { AddForm } from "../../../views/AddForm";
 import { Settings } from "../../../views/Settings";
 
 const Tab = createBottomTabNavigator();
@@ -21,7 +21,7 @@ export const Navigation = () => {
 
     return (
         <>
-        <AddDevice visible={modalVisible} toggle={toggleModalVisible} />
+        <AddForm visible={modalVisible} toggle={toggleModalVisible} />
         <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: "#00CC99",
@@ -62,7 +62,7 @@ export const Navigation = () => {
                     />
             <Tab.Screen
                 name='Add'
-                component={AddDevice}
+                component={AddForm}
                 listeners={{
                     tabPress: e => {
                         e.preventDefault();
