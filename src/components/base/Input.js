@@ -13,9 +13,10 @@ export const Input = ({
     autoComplete,
     keyboardType,
     icon,
+    value,
+    setValue,
 }) => {
     // const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(null);
     // const [items, setItems] = useState([
     //     {label: 'AGD', value: 'agd'},
     //     {label: 'RTV', value: 'rtv'},
@@ -26,7 +27,7 @@ export const Input = ({
         <View
             style={StyleSheet.compose(styles.container, {
                 marginTop: marginTop,
-                width: width!=null? width : "100%",
+                width: width != null ? width : "100%",
             })}
         >
             <TextInput
