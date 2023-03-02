@@ -15,36 +15,32 @@ import { EmailSent } from "./src/views/user-auth/EmailSent";
 import UserAuth from "./src/views/UserAuth";
 
 export default function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const [theme, toggleTheme] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [theme, toggleTheme] = useState(false);
 
-    const [loaded] = useFonts({
-        Sen: require("./assets/fonts/Sen-Regular.ttf"),
-        SenBold: require("./assets/fonts/Sen-Bold.ttf"),
-        SourceSansProSemiBold: require("./assets/fonts/SourceSansPro-SemiBold.ttf"),
-    });
+  const [loaded] = useFonts({
+    Sen: require("./assets/fonts/Sen-Regular.ttf"),
+    SenBold: require("./assets/fonts/Sen-Bold.ttf"),
+    SourceSansProSemiBold: require("./assets/fonts/SourceSansPro-SemiBold.ttf"),
+  });
 
-    if (!loaded) {
-        return null;
-    }
+  if (!loaded) {
+    return null;
+  }
 
-    return (
-        <View style={style.app}>
-            <ThemeContext.Provider value={theme ? darkTheme : lightTheme}>
-                <NavigationContainer>
-                    {isLoggedIn ? (
-                        <Navigation></Navigation>
-                    ) : (
-                        <UserAuth></UserAuth>
-                    )}
-                </NavigationContainer>
-            </ThemeContext.Provider>
-        </View>
-    );
+  return (
+    <View style={style.app}>
+      <ThemeContext.Provider value={theme ? darkTheme : lightTheme}>
+        <NavigationContainer>
+          {isLoggedIn ? <Navigation></Navigation> : <UserAuth></UserAuth>}
+        </NavigationContainer>
+      </ThemeContext.Provider>
+    </View>
+  );
 }
 
 const style = StyleSheet.create({
-    app: {
-        flex: 1,
-    },
+  app: {
+    flex: 1,
+  },
 });
