@@ -29,7 +29,7 @@ export const Login = ({ navigation, loginSetter }) => {
         style={{ maxWidth: "100%", height: 180, resizeMode: "contain" }}
       />
       <Heading marginTop={39}>Zaloguj się</Heading>
-      <InlineBox marginTop={10}>
+      <InlineBox marginTop={10} type='center'>
         <Description>Nie masz konta?</Description>
         <TextLink
           onPress={() => {
