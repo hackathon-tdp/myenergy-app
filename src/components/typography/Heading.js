@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
-import ThemeContext from "../ThemeContext";
+import AppContext from "../AppContext";
 
 export const Heading = ({ marginTop, textAlign, children }) => {
-    const theme = useContext(ThemeContext);
+    const { theme } = useContext(AppContext);
 
     const styles = StyleSheet.create({
         heading: {

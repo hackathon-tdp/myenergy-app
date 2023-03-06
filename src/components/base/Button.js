@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
-import ThemeContext from "../ThemeContext";
+import AppContext from "../AppContext";
 
-export const Button = ({ type = 'default', marginTop, onPress, children }) => {
-    const theme = useContext(ThemeContext);
+export const Button = ({ type = "default", marginTop, onPress, children }) => {
+    const { theme } = useContext(AppContext);
 
     const styles =
         type === "empty"
@@ -27,7 +27,7 @@ export const Button = ({ type = 'default', marginTop, onPress, children }) => {
                       fontSize: 16,
                   },
               })
-        : type === "inactive"
+            : type === "inactive"
             ? StyleSheet.create({
                   button: {
                       marginTop: marginTop,

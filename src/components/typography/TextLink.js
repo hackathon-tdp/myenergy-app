@@ -1,15 +1,15 @@
 import { useContext } from "react";
 import { Pressable, Text, StyleSheet } from "react-native";
-import ThemeContext from "../ThemeContext";
+import AppContext from "../AppContext";
 
 export const TextLink = ({ onPress, marginTop, children }) => {
-    const theme = useContext(ThemeContext);
+    const { theme } = useContext(AppContext);ś
 
     const styles = StyleSheet.create({
         link: {
             fontFamily: theme.font.regular,
             fontSize: theme.textSize.medium,
-            color: theme.colors.linkText
+            color: theme.colors.linkText,
         },
     });
 

@@ -1,46 +1,42 @@
 //import 'react-native-gesture-handler';  // dont delete yet i need to check if everythings alright
 import * as React from "react";
-import { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { Navigation } from "./src/components/base/navigation/Navigation";
 import { useFonts } from "expo-font";
 import { StyleSheet, View } from "react-native";
-import { lightTheme, darkTheme } from "./src/variables";
-import ThemeContext from "./src/components/ThemeContext";
-
-import { Login } from "./src/views/user-auth/Login";
-import { SignUp } from "./src/views/user-auth/SignUp";
-import { PasswordReset } from "./src/views/user-auth/PasswordReset";
-import { EmailSent } from "./src/views/user-auth/EmailSent";
+import AppContext, { AppProvider } from "./src/components/AppContext";
 import UserAuth from "./src/views/UserAuth";
 
+const AppProper = () => {
+    const { isLoggedIn } = React.useContext(AppContext);
+
+    return <>{isLoggedIn ? <Navigation /> : <UserAuth />}</>;
+};
+
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [theme, toggleTheme] = useState(false);
+    const [loaded] = useFonts({
+        Sen: require("./assets/fonts/Sen-Regular.ttf"),
+        SenBold: require("./assets/fonts/Sen-Bold.ttf"),
+        SourceSansProSemiBold: require("./assets/fonts/SourceSansPro-SemiBold.ttf"),
+    });
 
-  const [loaded] = useFonts({
-    Sen: require("./assets/fonts/Sen-Regular.ttf"),
-    SenBold: require("./assets/fonts/Sen-Bold.ttf"),
-    SourceSansProSemiBold: require("./assets/fonts/SourceSansPro-SemiBold.ttf"),
-  });
+    if (!loaded) {
+        return null;
+    }
 
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <View style={style.app}>
-      <ThemeContext.Provider value={theme ? darkTheme : lightTheme}>
-        <NavigationContainer>
-          {isLoggedIn ? <Navigation></Navigation> : <UserAuth></UserAuth>}
-        </NavigationContainer>
-      </ThemeContext.Provider>
-    </View>
-  );
+    return (
+        <View style={style.app}>
+            <AppProvider>
+                <NavigationContainer>
+                    <AppProper />
+                </NavigationContainer>
+            </AppProvider>
+        </View>
+    );
 }
 
 const style = StyleSheet.create({
-  app: {
-    flex: 1,
-  },
+    app: {
+        flex: 1,
+    },
 });
