@@ -25,6 +25,7 @@ export const lightTheme = {
     },
     textSize: {
         large: 28,
+        big: 24,
         medium: 17,
     }
 }

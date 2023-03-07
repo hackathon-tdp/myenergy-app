@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
 import AppContext from "../AppContext";
 
-export const Heading = ({ marginTop, textAlign, children }) => {
+export const Heading = ({ marginTop, textAlign, children, size }) => {
     const { theme } = useContext(AppContext);
 
     const styles = StyleSheet.create({
@@ -11,7 +11,7 @@ export const Heading = ({ marginTop, textAlign, children }) => {
             textAlign: textAlign,
 
             fontFamily: theme.font.bold,
-            fontSize: theme.textSize.large,
+            fontSize: size==='small'? theme.textSize.big : theme.textSize.large,
             color: theme.colors.headerText,
         },
     });
