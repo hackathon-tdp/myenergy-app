@@ -3,7 +3,7 @@ import { Pressable, Text, StyleSheet } from "react-native";
 import AppContext from "../AppContext";
 
 export const TextLink = ({ onPress, marginTop, children }) => {
-    const { theme } = useContext(AppContext);ś
+    const { theme } = useContext(AppContext);
 
     const styles = StyleSheet.create({
         link: {

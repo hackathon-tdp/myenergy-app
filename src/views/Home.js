@@ -11,13 +11,13 @@ import {
     Pressable,
     ScrollView,
 } from "react-native";
-
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Heading } from "../components/typography/Heading";
 import { Description } from "../components/typography/Description";
 import { InlineBox } from "../components/base/InlineBox";
 import Icon from "../components/base/Icon";
 import { LinearGradient } from "expo-linear-gradient";
+import AppContext from "../components/AppContext";
 
 const NoLocalisations = () => (
     <Wrapper justifyContent='center' alignItems='center'>
@@ -272,10 +272,12 @@ const LocalisationView = () => {
 };
 
 const HomeProper = () => {
+    const {user} = useContext(AppContext);
+
     return (
         <ScrollView>
             <Wrapper>
-                <Heading marginTop={100}>Witaj Maciek</Heading>
+                <Heading marginTop={100}>Witaj {user.username}</Heading>
                 <Description>Oto twoje podsumowanie</Description>
                 <Heading marginTop={38} size='small'>
                     Statystyki

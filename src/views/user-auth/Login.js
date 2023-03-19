@@ -11,17 +11,18 @@ import { useContext, useState } from "react";
 import AppContext from "../../components/AppContext";
 
 export const Login = ({ navigation, loginSetter }) => {
-    const { setIsLoggedIn } = useContext(AppContext);
+    const { setIsLoggedIn, setUser, setAccessToken, setRefreshToken } =
+        useContext(AppContext);
 
-    const [accessToken, setAccessToken] = useState("");
-    const [refreshToken, setRefreshToken] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const signUp = async (username, password) => {
+    const signIn = async (username, password) => {
         const { data } = await API.post("auth/login/", { username, password });
         setAccessToken(data.access_token);
         setRefreshToken(data.refresh_token);
+        console.log(data.user);
+        setUser(data.user);
         setHeader(data.accessToken);
         setIsLoggedIn(true);
     };
@@ -39,7 +40,7 @@ export const Login = ({ navigation, loginSetter }) => {
                     onPress={() => {
                         navigation.navigate("signUp");
                     }}
-                >ś
+                >
                     Zarejestruj się
                 </TextLink>
             </InlineBox>
@@ -69,7 +70,7 @@ export const Login = ({ navigation, loginSetter }) => {
             >
                 Zapomniałeś hasła?
             </TextLink>
-            <Button marginTop={18} onPress={() => signUp(username, password)}>
+            <Button marginTop={18} onPress={() => signIn(username, password)}>
                 Zaloguj się
             </Button>
         </Wrapper>
