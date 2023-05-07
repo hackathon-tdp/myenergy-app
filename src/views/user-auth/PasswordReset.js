@@ -4,8 +4,20 @@ import { Heading } from "../../components/typography/Heading";
 import { Description } from "../../components/typography/Description";
 import { Button } from "../../components/base/Button";
 import { Input } from "../../components/base/Input";
+import { useState } from "react";
+import API from "../../requests";
 
-export const PasswordReset = () => {
+export const PasswordReset = ({navigation}) => {
+    const [email, setEmail] = useState("");
+
+    const passwordResetHandler = async () => {
+        API.post(
+            "auth/password/reset/",
+            {email}
+        );
+        navigation.navigate("root");
+    }
+
     return (
         <Wrapper alignItems='center' justifyContent='center'>
             <Image
@@ -21,8 +33,10 @@ export const PasswordReset = () => {
                 placeholder='Email'
                 secure={false}
                 autoComplete='email'
+                value={email}
+                setValue={setEmail}
             />
-            <Button marginTop={47}>Wyślij</Button>
+            <Button marginTop={47} onPress={passwordResetHandler}>Wyślij</Button>
         </Wrapper>
     );
 };

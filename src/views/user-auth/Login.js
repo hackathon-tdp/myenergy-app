@@ -11,68 +11,65 @@ import { useContext, useState } from "react";
 import AppContext from "../../components/AppContext";
 
 export const Login = ({ navigation, loginSetter }) => {
-    const { setIsLoggedIn, setUser, setAccessToken, setRefreshToken } =
-        useContext(AppContext);
+	const { setIsLoggedIn, setUser, setRefreshToken } = useContext(AppContext);
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-    const signIn = async (username, password) => {
-        const { data } = await API.post("auth/login/", { username, password });
-        setAccessToken(data.access_token);
-        setRefreshToken(data.refresh_token);
-        console.log(data.user);
-        setUser(data.user);
-        setHeader(data.accessToken);
-        setIsLoggedIn(true);
-    };
+	const signIn = async (email, password) => {
+		const { data } = await API.post("auth/login/", { email, password });
+		setRefreshToken(data.refresh_token);
+		setUser(data.user);
+		setHeader(data.accessToken);
+		setIsLoggedIn(true);
+	};
 
-    return (
-        <Wrapper alignItems='center' justifyContent='center'>
-            <Image
-                source={require("../../../assets/img/login.png")}
-                style={{ maxWidth: "100%", height: 180, resizeMode: "contain" }}
-            />
-            <Heading marginTop={39}>Zaloguj się</Heading>
-            <InlineBox marginTop={10} type='center'>
-                <Description>Nie masz konta? </Description>
-                <TextLink
-                    onPress={() => {
-                        navigation.navigate("signUp");
-                    }}
-                >
-                    Zarejestruj się
-                </TextLink>
-            </InlineBox>
-            <Input
-                marginTop={16}
-                placeholder='Email'
-                secure={false}
-                // icon={"email"}
-                autoComplete='email'
-                value={username}
-                setValue={setUsername}
-            />
-            <Input
-                marginTop={13}
-                placeholder='Hasło'
-                secure={true}
-                // icon={"power"}
-                autoComplete='password'
-                value={password}
-                setValue={setPassword}
-            />
-            <TextLink
-                marginTop={14}
-                onPress={() => {
-                    navigation.navigate("passwordReset");
-                }}
-            >
-                Zapomniałeś hasła?
-            </TextLink>
-            <Button marginTop={18} onPress={() => signIn(username, password)}>
-                Zaloguj się
-            </Button>
-        </Wrapper>
-    );
+	return (
+		<Wrapper alignItems="center" justifyContent="center">
+			<Image
+				source={require("../../../assets/img/login.png")}
+				style={{ maxWidth: "100%", height: 180, resizeMode: "contain" }}
+			/>
+			<Heading marginTop={39}>Zaloguj się</Heading>
+			<InlineBox marginTop={10} type="center">
+				<Description>Nie masz konta? </Description>
+				<TextLink
+					onPress={() => {
+						navigation.navigate("signUp");
+					}}
+				>
+					Zarejestruj się
+				</TextLink>
+			</InlineBox>
+			<Input
+				marginTop={16}
+				placeholder="Email"
+				secure={false}
+				// icon={"email"}
+				autoComplete="email"
+				value={email}
+				setValue={setEmail}
+			/>
+			<Input
+				marginTop={13}
+				placeholder="Hasło"
+				secure={true}
+				// icon={"power"}
+				autoComplete="password"
+				value={password}
+				setValue={setPassword}
+			/>
+			<TextLink
+				marginTop={14}
+				onPress={() => {
+					navigation.navigate("passwordReset");
+				}}
+			>
+				Zapomniałeś hasła?
+			</TextLink>
+			<Button marginTop={18} onPress={() => signIn(email, password)}>
+				Zaloguj się
+			</Button>
+		</Wrapper>
+	);
 };
